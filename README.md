@@ -214,3 +214,7 @@ route {
   "proxy": "https://user:pass@example.com"
 }
 ```
+###### Naiveproxy client software
+```
+https://github.com/klzgrad/naiveproxy/releases
+```
