@@ -36,11 +36,12 @@ apt-get update -y && apt-get upgrade -y
 ```
 
 ###### Compile and install caddy+naive
+###### Install Go
 ```
 wget https://go.dev/dl/go1.19.4.linux-amd64.tar.gz
 ```
 
-###### Extract the archive into /usr/local
+###### Extract the archive file
 ```
 sudo tar -xvf go1.19.4.linux-amd64.tar.gz
 ```
@@ -70,6 +71,7 @@ go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 ```
 
 ###### Caddyfile config
+###### به کوچیک بزرگی حروف دقت کنید. حتما کدی فایل رو با سی بزرگ بنویسید.
 ###### Delete comment before save the file.
 ###### کامنتارو قبل اینکه فایل رو سیو کنید حذف کنید، هر کامنت شامل متن فارسی و هشتگ هستش
 ```
@@ -82,13 +84,14 @@ route {
    hide_via
    probe_resistance
   }
- #ساخت یوزر دوم سوم و ... 
- forward_proxy {
-   basic_auth user2 pass2 #یوزرنیم و پسورد، برای ساپورت مولتی یوزر
+ #ساخت یوزر دوم سوم و... برای هر یوزر لازمه که ازاینجا تا کامنت بعدی رو کپی پیست کنید. 
+ forward_proxy { 
+   basic_auth user2 pass2 #یوزرنیم و پسورد
    hide_ip
    hide_via
    probe_resistance
   }
+  # تا اینجا رو باید کپی پیست کنید
  reverse_proxy  shorturl.at/lBDI5  { #آدرس فیک
    header_up  Host  {upstream_hostport}
    header_up  X-Forwarded-Host  {host}
